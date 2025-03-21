@@ -4,6 +4,7 @@ extends Node3D
 @onready var cage = $Cage/StaticBody3D
 @onready var player = $Player
 @onready var goal = $Goal
+@onready var player2 = $Player_2
 
 @onready var trajectory_mesh = ImmediateMesh.new()
 @onready var trajectory_instance = MeshInstance3D.new()
@@ -11,7 +12,7 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player.cage = cage
-	
+	player2.cage = cage
 	trajectory_instance.mesh = trajectory_mesh
 	add_child(trajectory_instance)
 
@@ -41,6 +42,9 @@ func shoot_ball():
 func _physics_process(delta):
 	player.ball = ball
 	goal.ball = ball
+	player2.ball = ball
+	player2.o_player = player
+	player2.o_goal = goal
 	
 func _on_GoalZone_body_entered(body):
 	if body.name == "BallRigidBody3D":  # ou vérifie une autre condition
@@ -70,6 +74,11 @@ func _process(delta: float) -> void:
 		
 	player.locked_ball = goal.have_ball
 	if player.shot:
+		draw_trajectory()
+	
+	#coequipier
+	player2.locked_ball = goal.have_ball
+	if player2.shot:
 		draw_trajectory()
 	#print("Main set locked_ball to:", player.locked_ball)
 		
