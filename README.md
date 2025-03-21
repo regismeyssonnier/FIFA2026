@@ -17,4 +17,5 @@ Stick right look at in all direction, AXIS X (TWIST pivot, turn left or right), 
 
 # 2. Update 1.0
 Add a teammate who do some high precision pass when he is at plus 20 meters of the goal, and shoot to the goal if he is at 20 meters maximum or less of the goal.
-He go to search the ball too and stay at 5 meters if you have the ball.
+
+He goes to search the ball too and stay at 5 meters if you have the ball.
